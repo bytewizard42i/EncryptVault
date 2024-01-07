@@ -1,18 +1,46 @@
-''' this is the original programming for the EncryptVault system. It has been my, (John M.P. Santi Sr.) dream
-for the last 2 years. I have been learning about programming and computer systems for the last two years to get
-to this point of being able to program this application.
-The goal of this programm is to allow users to safely, digitally, store their seed phrases, and passwords.
-We make 2 USB keys, one for encrypting which is green, and one for decrypting red. Enter the data to be encrypted. 
-Enter your encryption USB. The program encrypts the data and returns both 
-the encrypted data and a QR representation which can be stored anywhere safely, 
-online on the cloud, at moms and sisters house or computer or phone. Theoretically one could save a photo of 10 
-QR codes created by EV and make one QR code representing the lot,
-which could then be decrypted with a two step process. This program accesses your camera to photograph the 
-QR code, and then Decrypts it into the original data which is safely displayed on the EncryptVault device.
-The idea is that the static encryption and decryption keys are split and encrypted with a common EncryptVault
-cipher and then stored immutably on the blockchain. some function of verification by the user and the decryption
-from centralized EV system gets the key returned to the customer in 2 distinct parts in such a way that 
-EV cannot actually regenerate the key, only the customer on thier perspective device'''
+# This is my GitHub repository file for EncryptVault started 1-7-2024
+
+''' this is the original programming for the EncryptVault system. 
+It has been my, (John M.P. Santi Sr.) dream for the last 2 years. 
+I have been learning about programming and computer systems for the 
+last two years to get to this point of being able to program this 
+application. The goal of this programm is to allow users to safely,
+digitally, store their seed phrases, and passwords.'''
+
+''' 1. We make 2 USB keys, one for encrypting which is green, and one 
+for decrypting which is red. This is likely best done with secure
+USB drives that are called Apricorn, which have security pins. 
+
+    2. Encrypting your data.
+Enter your encryption USB (Green). The program encrypts the data and 
+returns both the encrypted data (to be stored) and a QR representation 
+(of the encrypted data), which can be stored anywhere safely: 
+    -online
+    -on the cloud
+    -at moms or sisters house, in a safe, computer, or phone. '''
+
+''' ***Note- 
+    A. The program should promt you to save both the encrypted file and 
+    the encrypted data QR code in multiple locations. 
+
+    B. The program should also check the data that is saved against the 
+    original file, and against each other for errors. 
+
+    Theoretically one could save a photo of 10 QR codes created by EV and 
+make one QR code representing the lot, which could then be decrypted with 
+a two step decryption process. 
+
+    This program accesses your camera to photograph the QR code, and then 
+Decrypts it into the original data which is safely displayed on the 
+EncryptVault device.
+
+    The idea is that the static encryption and decryption keys are split and 
+encrypted with a common EncryptVault cipher and then stored immutably on the 
+blockchain. some function of verification by the user and the decryption from 
+centralized EV system gets the key returned to the customer in 2 distinct 
+parts in such a way that EV cannot actually regenerate the key, only the 
+customer on thier perspective device'''
+
 
 # establish latest version
 # test for update availability
