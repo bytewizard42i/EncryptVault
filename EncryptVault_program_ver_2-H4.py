@@ -41,25 +41,24 @@ centralized EV system gets the key returned to the customer in 2 distinct
 parts in such a way that EV cannot actually regenerate the key, only the 
 customer on thier perspective device'''
 
-
 # establish latest version
 # test for update availability
 # offer update
 
-#-----------------------------------------------------------------------------
-#-----------------------Beginning of Code-------------------------------------
+#----------------------------------------------------------------------------------------
+#-----------------------Beginning of Code------------------------------------------------
 
-# ----code block A---define the variable 'ev_version' with a random number----
+# ----------code block A---define the variable 'usb_status' with a random number----------
 
-'''this code block is temporary and will be replaced with a search and return
-of the actual ev version which installed on the actual device'''
+'''this following code block is temporary and will be replaced with a "search" 
+and return the actual ev version which installed on the actual device'''
 
 import random
 numbers = [1.1, 2.0, 3.1, 4.2, 5.0]  # Defined set of numbers
 ev_version = random.choice(numbers)
 # print("Random number:", ev_version)
 print()
-#^^^^^end code block A^^^^^define the variable 'ev_version' with a random number^^^^^^^^^^^^^^^^
+#^^^^^end code block A^^^^^define the variable 'usb_status' with a random number^^^^^^^^^^^^^^^^
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 # welcome intro
@@ -128,9 +127,14 @@ if answer_make_keys:  # Equivalent to if answer_make_keys == True:
     #----code block B.2----------generate RSA Keys and store in PEM format----------------------
     #---------------------------------------------------------------------------------------
     from Crypto.PublicKey import RSA
+    '''2nd try-  from cryptography.hazmat.primitives.asymmetric import rsa
+       3rd try- from cryptography.hazmat.primitives.asymmetric import rsa
+                from cryptography.hazmat.backends import default_backend'''
+
 
     # Export RSA public/private KEY in PEM format
     key = RSA.generate(4096)
+    
     red_private_key = key.exportKey('PEM').decode('utf-8')
     print("This is your Red Pill Private Key:\n", red_private_key)
 
@@ -146,23 +150,23 @@ if answer_make_keys:  # Equivalent to if answer_make_keys == True:
     
 
     '''This code adds upper and lower case letters to the 4 digit serial code ensuring less chance of duplicates'''
-    import random
-    import string
+    # import random
+    # import string
 
     # Generate a 4-digit random alphanumeric string
-    characters = string.ascii_letters + string.digits
-    serial_number = ''.join(random.choices(characters, k=4))
+    CHARACTERS = string.ascii_letters + string.digits
+    SERIAL_NUMBER = ''.join(random.choices(CHARACTERS, k=4))
 
     # Save PEM KEY into the file
     # red_private_key save to file
-    red_private_filename = f'/tmp/EV_private_key_ser-{serial_number}.pem'
+    red_private_filename = f'/tmp/EV_private_key_ser-{SERIAL_NUMBER}.pem'
     with open(red_private_filename, 'x') as file:
         file.write(red_private_key)
     # Set file permissions to read-only
     os.chmod(red_private_filename, 0o400)
 
     # green_public_key save to file
-    green_public_filename = f'/tmp/EV_public_key_ser-{serial_number}.pem'
+    green_public_filename = f'/tmp/EV_public_key_ser-{SERIAL_NUMBER}.pem'
     with open(green_public_filename, 'x') as file:
         file.write(green_public_key)
 
@@ -170,19 +174,19 @@ if answer_make_keys:  # Equivalent to if answer_make_keys == True:
     os.chmod(green_public_filename, 0o400)
     
 else:
-   print("You chose 'no'. Skipping the key generation process.\n")
+    print("\033[32mYou chose 'no'. Skipping the KEY generation process.\033[0m\n")
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 #^^^^^End Code Block B^^^^^generate RSA Keys and store in PEM format^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     
 
-print("\nOK -> Line 148\n")
+# print("\nOK -> Line 148\n")
 
 #print("We have made it past the KEY encryption block")
 
 
 
 '''module working properly'''
-#-----code block C-----Check if USB is inserted-------------------------------------------------
+#-----code block C-----Check if USB is inserted---------------------------------------------
 #-------------------------------------------------------------------------------------------
 import subprocess
 import sys
@@ -235,15 +239,15 @@ print("Start 'Check for USB' subroutine\n")
 main()
 print("End 'Check for USB' subroutine\n")
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-#^^^^^End Code Block C^^^^^Check if USB is inserted^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#^^^^^End Code Block C^^^^^Check if USB is inserted^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-print("\nOK -> Line 208\n")
+# print("\nOK -> Line 208\n")
 
 
 
 '''module appears to be working properly'''
-#-----code block D-----Format USB drive in NTFS format and label drive later-----------------------
+#-----code block D-----Format USB drive in NTFS format and label drive later----------------------
 #-------------------------------------------------------------------------------------------------
 import subprocess
 import sys
@@ -271,7 +275,7 @@ def format_usb_drive(usb_drive):
     subprocess.run(format_command, shell=True)
 
     # Prompt the user to provide a drive label
-    drive_label = input("Enter a drive label of EncryptVault_Red_DC or EncryptVault_Green_EC: ")
+    drive_label = input("Please enter a drive label of \033[34mEncryptVault_Red_DC\033[0m or \033[34mEncryptVault_Green_EC: \033[0m")
 
     # Set the drive label for the formatted USB drive
     label_command = f"label {usb_drive}: {drive_label}"
@@ -295,6 +299,7 @@ def format_USB_main():
 format_USB_main()
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # ^^^^^End code block D^^^^^Format USB drive in NTFS format and label drive later^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 
 
@@ -322,11 +327,11 @@ def get_usb_drive_letter():
     return None
 
 def save_file_to_usb():
-    # Create the root window
-    root = tk.Tk()
-    root.withdraw()
-
     while True:
+        # Create a new root window
+        root = tk.Tk()
+        root.withdraw()
+
         # Prompt the user to browse and select a file
         print("Select an EncryptVault KEY file to save to your USB")
         file_path = filedialog.askopenfilename()
@@ -363,6 +368,9 @@ def save_file_to_usb():
             print(f"Failed to save file to USB drive: {e}")
             break
 
+        # Destroy the root window
+        root.destroy()
+
         # Prompt the user if they want to insert another backup drive
         backup_confirmation = input("Do you want to insert another backup drive? (y/n) ")
 
@@ -373,17 +381,12 @@ def save_file_to_usb():
             if exit_confirmation.lower() == "y":
                 break
 
-    root.destroy()
-
 save_file_to_usb()
-
 
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 #^^^^^End Code Block E^^^^^This bit of code is to save the KEY files to the USB drive^^^^^^^^^^^^^^^^^^^^^
 
-#print("\nOK -> Line 350\n")
-input("press any key to continue...")
-
+input("At line 356, press any key to continue...")
 
 #-----code block F-----This bit of code is to get input and encrypt data-------------------------------------
 #----------------------------------------------------------------------------------------------------------
@@ -459,7 +462,7 @@ def main_module_encrypt_data():
     usb_save_filename = "/path/to/usb/encrypted_data.txt"  # Replace with the actual USB file path
     save_data_to_file(encrypted_data, usb_save_filename)
 
-    print("Encryption and file saving completed successfully!")
+    print("\033[92mEncryption and file saving completed successfully!\033[0m")
 
 if __name__ == '__main__':
     main_module_encrypt_data()
@@ -467,7 +470,7 @@ if __name__ == '__main__':
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 #^^^^^End Code Block F^^^^^This bit of code is to get input and encrypt data^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-print("\nOK -> Line 430\n")
+input("At line 421, press any key to continue...")
 
 
 #-----code block G-----This bit of code is to decrypt data and display it-------------------------------------
