@@ -46,10 +46,14 @@ customer on thier perspective device'''
 # test for update availability
 # offer update
 
-#----------------------------------------------------------------------------------------
-# ----------code block A---define the variable 'ev_version' with a random number----------
-'''this code block is temporary and will be replaced with a search and return of the actual ev version which
-installed on the actual device'''
+#-----------------------------------------------------------------------------
+#-----------------------Beginning of Code-------------------------------------
+
+# ----code block A---define the variable 'ev_version' with a random number----
+
+'''this code block is temporary and will be replaced with a search and return
+of the actual ev version which installed on the actual device'''
+
 import random
 numbers = [1.1, 2.0, 3.1, 4.2, 5.0]  # Defined set of numbers
 ev_version = random.choice(numbers)
