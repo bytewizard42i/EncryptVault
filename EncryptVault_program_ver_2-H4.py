@@ -87,11 +87,10 @@ print("Lets begin...\n")
 # between a Green encryption and Red decryption drive. It would be nice to
 # be able to verify the encryption key size on the USB, e.g.-256, 512
 
-import os    '''This allows us to run operating system commands 
-                from within the python script'''
-import sys   '''This allows us to verify that a library has been
-                imported after calling it with the import command'''
-import cryptography    '''This allows us to use the cryptography library'''
+import os    # This allows us to run operating system commands from within the python script
+import sys   # This allows us to verify that a library has been
+             # imported after calling it with the import command
+import cryptography    # This allows us to use the cryptography library
 
 import subprocess   #This allows us to run a command line command from within the python script
 import random    #This allows us to generate random numbers
@@ -171,7 +170,7 @@ if answer_make_keys:  # Equivalent to if answer_make_keys == True:
 
 
     # Export RSA public/private KEY in PEM format
-    key = RSA.generate(4096)
+    key = rsa.generate(4096)
     
     red_private_key = key.exportKey('PEM').decode('utf-8')
     print("This is your Red Pill Private Key:\n", red_private_key)
