@@ -62,7 +62,7 @@ and return the actual ev version which installed on the actual device'''
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 # welcome intro
-print("Welcome, dear friends, to EncryptVault!\nThis is your place to safely, 
+print("Welcome, dear friends, to EncryptVault!\nThis is your place to safely,") 
       print("digitally, store all of your crypto wallet seed phrases and private keys.")
 print("\"Never, ever, lose access to your crypto seed phrases and wallets, ever, no matter what\" **\n")
 # print("EncryptVault Version-",ev_version)
