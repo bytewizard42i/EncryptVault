@@ -72,7 +72,7 @@ print("\"Never, ever, lose access to your crypto seed phrases and wallets, ever,
 #     print("         ***Warning! You are not currently running the latest version of EncryptVault***")
 #     print("            For security reasons, please update by clicking here: <Update Now>\n")
     
-# print("Lets begin...\n")
+print("Lets begin...\n")
 
 # call usb drive for status on your usb stick. 0 = none inserted, 1 = non-password protected USB inserted, 
 # 2 = valid encryption drive Green, 3 = valid decryption drive Red
