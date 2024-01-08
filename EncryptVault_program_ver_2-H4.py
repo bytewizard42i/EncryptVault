@@ -160,10 +160,10 @@ if answer_make_keys:  # Equivalent to if answer_make_keys == True:
     '''generate Asymetric KEYS'''
     #----code block B.2----------generate RSA Keys and store in PEM format----------------------
     #---------------------------------------------------------------------------------------
-    from Crypto.PublicKey import RSA
-    '''2nd try-  from cryptography.hazmat.primitives.asymmetric import rsa
-       3rd try- from cryptography.hazmat.primitives.asymmetric import rsa
-                from cryptography.hazmat.backends import default_backend'''
+     
+    from cryptography.hazmat.backends import default_backend
+    from cryptography.hazmat.primitives import serialization
+    from cryptography.hazmat.primitives.asymmetric import rsa
 
 
     # Export RSA public/private KEY in PEM format
