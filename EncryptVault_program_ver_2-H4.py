@@ -53,26 +53,26 @@ customer on thier perspective device'''
 '''this following code block is temporary and will be replaced with a "search" 
 and return the actual ev version which installed on the actual device'''
 
-import random
-numbers = [1.1, 2.0, 3.1, 4.2, 5.0]  # Defined set of numbers
-ev_version = random.choice(numbers)
+# import random
+# numbers = [1.1, 2.0, 3.1, 4.2, 5.0]  # Defined set of numbers
+# ev_version = random.choice(numbers)
 # print("Random number:", ev_version)
-print()
+# print()
 #^^^^^end code block A^^^^^define the variable 'usb_status' with a random number^^^^^^^^^^^^^^^^
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 # welcome intro
-print("Welcome, dear friends, to EncryptVault!\nThis is your place to safely, digitally, store all of your crypto wallet seed phrases and private keys.")
-print("\"Never, ever, lose access to your crypto seed phrases and wallets, ever, no matter what\" **\n")
-print("EncryptVault Version-",ev_version)
-# if ev_version = latest_ev_version, print("You are running the latest version of EncryptVault")
-if ev_version >= 4:
-    print("(You are running the most current version of EncryptVault)\n") 
-else:
-    print("         ***Warning! You are not currently running the latest version of EncryptVault***")
-    print("            For security reasons, please update by clicking here: <Update Now>\n")
+# print("Welcome, dear friends, to EncryptVault!\nThis is your place to safely, digitally, store all of your crypto wallet seed phrases and private keys.")
+# print("\"Never, ever, lose access to your crypto seed phrases and wallets, ever, no matter what\" **\n")
+# print("EncryptVault Version-",ev_version)
+# # if ev_version = latest_ev_version, print("You are running the latest version of EncryptVault")
+# if ev_version >= 4:
+#     print("(You are running the most current version of EncryptVault)\n") 
+# else:
+#     print("         ***Warning! You are not currently running the latest version of EncryptVault***")
+#     print("            For security reasons, please update by clicking here: <Update Now>\n")
     
-print("Lets begin...\n")
+# print("Lets begin...\n")
 
 # call usb drive for status on your usb stick. 0 = none inserted, 1 = non-password protected USB inserted, 
 # 2 = valid encryption drive Green, 3 = valid decryption drive Red
@@ -87,16 +87,45 @@ print("Lets begin...\n")
 
 import os
 import sys #This allows us to verify that a library has been imported after calling it with the import command
-import subprocess
-import random
-import string
 import cryptography
-import cryptography.hazmat.primitives
 
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives.asymmetric import rsa
 
-#print("Test marker- We are past the imports")
+def generate_rsa_keys():
+    # Generate a 4096-bit RSA private key
+    private_key = rsa.generate_private_key(
+        public_exponent=65537,
+        key_size=4096,
+        backend=default_backend()
+    )
 
-#print("\nOK ->Line 70\n")
+    # Get the public key from the private key
+    public_key = private_key.public_key()
+
+    # Save the private key to a file
+    with open("private_key.pem", "wb") as f:
+        f.write(private_key.private_bytes(
+            encoding=serialization.Encoding.PEM,
+            format=serialization.PrivateFormat.PKCS8,
+            encryption_algorithm=serialization.NoEncryption()
+        ))
+
+    # Save the public key to a file
+    with open("public_key.pem", "wb") as f:
+        f.write(public_key.public_bytes(
+            encoding=serialization.Encoding.PEM,
+            format=serialization.PublicFormat.SubjectPublicKeyInfo
+        ))
+
+    print("RSA key pair generated and saved to files.")
+
+if __name__ == "__main__":
+    generate_rsa_keys()
+
+input("We made it past key generation, would you like to continue?")
+
 
 # before we generate keys we prompt the user and ask if they want to make keys
 
