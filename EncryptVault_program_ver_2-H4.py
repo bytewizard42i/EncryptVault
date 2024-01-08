@@ -89,6 +89,10 @@ import os
 import sys #This allows us to verify that a library has been imported after calling it with the import command
 import cryptography
 
+import subprocess
+import random
+import string
+
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import rsa
