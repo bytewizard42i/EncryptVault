@@ -62,7 +62,7 @@ and return the actual ev version which installed on the actual device'''
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 # welcome intro
-print("Welcome, dear friends, to EncryptVault!\nThis is your place to safely,") 
+print("\nWelcome, dear friends, to EncryptVault!\nThis is your place to safely,") 
 print("digitally, store all of your crypto wallet seed phrases and private keys.")
 print("\"Never, ever, lose access to your crypto seed phrases and wallets, ever, no matter what\" **\n")
 # print("EncryptVault Version-",ev_version)
@@ -169,14 +169,22 @@ if answer_make_keys:  # Equivalent to if answer_make_keys == True:
     from cryptography.hazmat.primitives.asymmetric import rsa
 
 
-    # Export RSA public/private KEY in PEM format
-    key = rsa.generate(4096)
     
-    red_private_key = key.exportKey('PEM').decode('utf-8')
-    print("This is your Red Pill Private Key:\n", red_private_key)
+        
+    # Generate a 4096-bit RSA private key
+    def generate_rsa_keys():
+        key = rsa.generate_private_key(
+            public_exponent=65537,
+            key_size=4096,
+            backend=default_backend()
+    )
+        
+        # Export RSA public/private KEY in PEM format
+        red_private_key = key.exportKey('PEM').decode('utf-8')
+        print("This is your Red Pill Private Key:\n", red_private_key)
 
-    green_public_key = key.publickey().exportKey('PEM').decode('utf-8')
-    print("This is your Green Pill Public Key:\n", green_public_key)
+        green_public_key = key.publickey().exportKey('PEM').decode('utf-8')
+        print("This is your Green Pill Public Key:\n", green_public_key)
     
     
 
