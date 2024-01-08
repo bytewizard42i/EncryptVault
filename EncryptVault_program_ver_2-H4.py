@@ -62,7 +62,8 @@ and return the actual ev version which installed on the actual device'''
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 # welcome intro
-print("Welcome, dear friends, to EncryptVault!\nThis is your place to safely, digitally, store all of your crypto wallet seed phrases and private keys.")
+print("Welcome, dear friends, to EncryptVault!\nThis is your place to safely, 
+      print("digitally, store all of your crypto wallet seed phrases and private keys.")
 print("\"Never, ever, lose access to your crypto seed phrases and wallets, ever, no matter what\" **\n")
 # print("EncryptVault Version-",ev_version)
 # # if ev_version = latest_ev_version, print("You are running the latest version of EncryptVault")
@@ -74,6 +75,7 @@ print("\"Never, ever, lose access to your crypto seed phrases and wallets, ever,
     
 print("Lets begin...\n")
 
+# future functionality...
 # call usb drive for status on your usb stick. 0 = none inserted, 1 = non-password protected USB inserted, 
 # 2 = valid encryption drive Green, 3 = valid decryption drive Red
 
@@ -85,13 +87,15 @@ print("Lets begin...\n")
 # between a Green encryption and Red decryption drive. It would be nice to
 # be able to verify the encryption key size on the USB, e.g.-256, 512
 
-import os
-import sys #This allows us to verify that a library has been imported after calling it with the import command
-import cryptography
+import os    '''This allows us to run operating system commands 
+                from within the python script'''
+import sys   '''This allows us to verify that a library has been
+                imported after calling it with the import command'''
+import cryptography    '''This allows us to use the cryptography library'''
 
-import subprocess
-import random
-import string
+import subprocess   #This allows us to run a command line command from within the python script
+import random    #This allows us to generate random numbers
+import string   #This allows us to generate random strings
 
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
