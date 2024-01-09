@@ -62,9 +62,20 @@ and return the actual ev version which installed on the actual device'''
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 # welcome intro
-print("\nWelcome, dear friends, to EncryptVault!\nThis is your place to safely,") 
-print("digitally, store all of your crypto wallet seed phrases and private keys.")
-print("\"Never, ever, lose access to your crypto seed phrases and wallets, ever, no matter what\" **\n")
+# ANSI escape code for green text
+GREEN = "\033[92m"  # Text color = Bright Green
+BRIGHT_BLUE = "\033[94m"
+ITALIC = "\033[3m"
+RESET = "\033[0m"   # Reset to default color
+
+# example: print(f"{GREEN}This text will be green.{RESET}")
+
+print(f"\n{BRIGHT_BLUE}{ITALIC}<----------------------------------------------------------------->\n"
+      f"Welcome, dear friends, to EncryptVault!\nThis is your place to "
+      f"safely, digitally, store all of your crypto-wallet seed phrases and private keys.{RESET}")
+print(f"{GREEN}{ITALIC}\n\"Never, ever, lose access to your crypto seed phrases and wallets, ever ,"
+      f"no matter what\"** -J. Santi\n{RESET}")
+
 # print("EncryptVault Version-",ev_version)
 # # if ev_version = latest_ev_version, print("You are running the latest version of EncryptVault")
 # if ev_version >= 4:
