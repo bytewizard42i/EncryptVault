@@ -64,15 +64,15 @@ and return the actual ev version which installed on the actual device'''
 # welcome intro
 # ANSI escape code for green text
 GREEN = "\033[92m"  # Text color = Bright Green
-BRIGHT_BLUE = "\033[94m"
+BLUE = "\033[94m"
 RED = "\033[91m"    # Text color = Red
 ITALIC = "\033[3m"
 RESET = "\033[0m"   # Reset to default color
 
 # example: print(f"{GREEN}This text will be green.{RESET}")
 
-print(f"\n{BRIGHT_BLUE}{ITALIC}<----------------------------------------------------------------->\n"
-      f"Welcome, dear friends, to EncryptVault!\nThis is your place to "
+print(f"\n{BLUE}{ITALIC}<----------------------------------------------------------------->\n"
+      f"Welcome, my dear friends, to EncryptVault!\nThis is your place to "
       f"safely, digitally, store all of your crypto-wallet seed phrases and private keys.{RESET}")
 print(f"{GREEN}{ITALIC}\n\"Never, ever, lose access to your crypto seed phrases and wallets, ever ,"
       f"no matter what\"** -J. Santi\n{RESET}")
@@ -150,7 +150,8 @@ def generate_rsa_keys():
     print("\n<----------------------------------------------------------------->")
     print(f"{RED}{ITALIC}WARNING! Never let anyone see this code that you don't want "
           f"to have FULL ACCESS to your crypto wallet.\nDo not take photos of this "
-          f"code nor save it to the web{RESET}")
+          f"code nor save it to the web.\nThere are significants risks in saving and "
+          f"printing this code{RESET}")
     print(f"\n{RED}<------------------Beginning of Private Key------------------------------>\n")
     print(private_key_pem.decode())
     print(f"\n{RED}<------------------End of Private Key------------------------------>\n{RESET}")
@@ -158,7 +159,7 @@ def generate_rsa_keys():
     # Print the public key
     print("\n<----------------------------------------------------------------->")
     print(f"{GREEN}{ITALIC}This is your public key for encryption."
-          f"It may be shared with anyone you wish, and stored anywhere as text or QR code.")
+          f"\nIt may be shared with anyone you wish,\nand stored anywhere as text or QR code.")
     print(f"\n<------------------Beginning of Public Key------------------------------>\n")
     print(public_key_pem.decode())
     print(f"\n<------------------End of Public Key------------------------------>\n{RESET}")
