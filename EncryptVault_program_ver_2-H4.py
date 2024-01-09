@@ -65,6 +65,7 @@ and return the actual ev version which installed on the actual device'''
 # ANSI escape code for green text
 GREEN = "\033[92m"  # Text color = Bright Green
 BRIGHT_BLUE = "\033[94m"
+RED = "\033[91m"    # Text color = Red
 ITALIC = "\033[3m"
 RESET = "\033[0m"   # Reset to default color
 
@@ -121,26 +122,51 @@ def generate_rsa_keys():
 
     # Get the public key from the private key
     public_key = private_key.public_key()
+    
+    # Serialize private key to PEM format
+    private_key_pem = private_key.private_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PrivateFormat.PKCS8,
+        encryption_algorithm=serialization.NoEncryption()
+    )
 
+    # Serialize public key to PEM format
+    public_key_pem = public_key.public_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PublicFormat.SubjectPublicKeyInfo
+    )
+    
     # Save the private key to a file
     with open("private_key.pem", "wb") as f:
-        f.write(private_key.private_bytes(
-            encoding=serialization.Encoding.PEM,
-            format=serialization.PrivateFormat.PKCS8,
-            encryption_algorithm=serialization.NoEncryption()
-        ))
+        f.write(private_key_pem)
 
     # Save the public key to a file
     with open("public_key.pem", "wb") as f:
-        f.write(public_key.public_bytes(
-            encoding=serialization.Encoding.PEM,
-            format=serialization.PublicFormat.SubjectPublicKeyInfo
-        ))
+        f.write(public_key_pem)
 
     print("RSA key pair generated and saved to files.")
+    
+    # Print the private key
+    print("\n<----------------------------------------------------------------->")
+    print(f"{RED}{ITALIC}WARNING! Never let anyone see this code that you don't want "
+          f"to have FULL ACCESS to your crypto wallet.\nDo not take photos of this "
+          f"code nor save it to the web{RESET}")
+    print(f"\n{RED}<------------------Beginning of Private Key------------------------------>\n")
+    print(private_key_pem.decode())
+    print(f"\n{RED}<------------------End of Private Key------------------------------>\n{RESET}")
+    
+    # Print the public key
+    print("\n<----------------------------------------------------------------->")
+    print(f"{GREEN}{ITALIC}This is your public key for encryption."
+          f"It may be shared with anyone you wish, and stored anywhere as text or QR code.")
+    print(f"\n<------------------Beginning of Public Key------------------------------>\n")
+    print(public_key_pem.decode())
+    print(f"\n<------------------End of Public Key------------------------------>\n{RESET}")
+
 
 if __name__ == "__main__":
     generate_rsa_keys()
+    
 
 input("We made it past key generation, would you like to continue?")
 
