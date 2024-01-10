@@ -136,6 +136,7 @@ def generate_rsa_keys():
         format=serialization.PublicFormat.SubjectPublicKeyInfo
     )
     
+def save_keys_to_file_Plain():   # This function saves the keys to a file in plain text, added to separate generate_rsa_keys() function
     # Save the private key to a file
     with open("private_key.pem", "wb") as f:
         f.write(private_key_pem)
@@ -145,6 +146,8 @@ def generate_rsa_keys():
         f.write(public_key_pem)
 
     print("RSA key pair generated and saved to files.")
+    
+def print_Keys_to_screen():  # This function prints the keys to the screen, added to separate generate_rsa_keys() function
     
     # Print the private key
     print("\n<----------------------------------------------------------------->")
