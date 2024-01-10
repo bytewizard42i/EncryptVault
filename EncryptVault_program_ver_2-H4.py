@@ -64,35 +64,33 @@ and return the actual ev version which installed on the actual device'''
 # welcome intro
 
 GREEN = "\033[92m"  # Text color = Bright Green
-BLUE = "\033[94m"
+BLUE = "\033[94m"                   # example: print(f"{GREEN}This text will be green.{RESET}")
 RED = "\033[91m"    # Text color = Red
 ITALIC = "\033[3m"
 RESET = "\033[0m"   # Reset to default color
 
-_def_x = print(F"{BLUE}<----------->{RESET}") # Each time this is called, it prints a blue line to mark definition of a new function
 
+#>>>>>>>>>>
+def intro():
+    print(f"\n{BLUE}{ITALIC}<----------------------------------------------------------------->\n"
+        f"Welcome, my dear friend, to EncryptVault!\nThis is your place to "
+        f"safely, digitally, store all of your crypto-wallet seed phrases and private keys.{RESET}")
+    print(f"{GREEN}{ITALIC}\n\"Never, ever, lose access to your crypto seed phrases and wallets, ever ,"
+        f"no matter what\"** -J. Santi\n{RESET}")
 
-# example: print(f"{GREEN}This text will be green.{RESET}")
+    # print("EncryptVault Version-",ev_version)
+    # # if ev_version = latest_ev_version, print("You are running the latest version of EncryptVault")
+    # if ev_version >= 4:
+    #     print("(You are running the most current version of EncryptVault)\n") 
+    # else:
+    #     print("         ***Warning! You are not currently running the latest version of EncryptVault***")
+    #     print("            For security reasons, please update by clicking here: <Update Now>\n")
+        
+    print("Lets begin...\n")
 
-print(f"\n{BLUE}{ITALIC}<----------------------------------------------------------------->\n"
-      f"Welcome, my dear friends, to EncryptVault!\nThis is your place to "
-      f"safely, digitally, store all of your crypto-wallet seed phrases and private keys.{RESET}")
-print(f"{GREEN}{ITALIC}\n\"Never, ever, lose access to your crypto seed phrases and wallets, ever ,"
-      f"no matter what\"** -J. Santi\n{RESET}")
-
-# print("EncryptVault Version-",ev_version)
-# # if ev_version = latest_ev_version, print("You are running the latest version of EncryptVault")
-# if ev_version >= 4:
-#     print("(You are running the most current version of EncryptVault)\n") 
-# else:
-#     print("         ***Warning! You are not currently running the latest version of EncryptVault***")
-#     print("            For security reasons, please update by clicking here: <Update Now>\n")
-    
-print("Lets begin...\n")
-
-# future functionality...
-# call usb drive for status on your usb stick. 0 = none inserted, 1 = non-password protected USB inserted, 
-# 2 = valid encryption drive Green, 3 = valid decryption drive Red
+    # future functionality...
+    # call usb drive for status on your usb stick. 0 = none inserted, 1 = non-password protected USB inserted, 
+    # 2 = valid encryption drive Green, 3 = valid decryption drive Red
 
 '''prompt check USB'''
 #print("Let's start by checking the status of your USB:")
@@ -115,8 +113,11 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import rsa
 
-print(F"{BLUE}<----------->{RESET}")
-def generate_rsa_keys():
+
+
+
+#>>>>>>>>>>
+def generate_rsa_keys():        # before we generate keys we prompt the user and ask if they want to make keys
     # Generate a 4096-bit RSA private key
     private_key = rsa.generate_private_key(
         public_exponent=65537,
@@ -141,7 +142,11 @@ def generate_rsa_keys():
     )
  
     
-print(F"{BLUE}<----------->{RESET}")   
+# Before we save our crypto keys we prompt user if they want to save them to a file
+
+# !!!!!!!!Make sure that the files cannot be overwritten and that there is a 4 digit random string serial identifyer for the corresponding KEY pairs. Since Private KEY-A only decrypts Public KEY-A, we cannot get the KEY files confused or the data can be lost!!!!!!!!!
+
+#>>>>>>>>>>
 def save_keys_to_file_Plain():   # This function saves the keys to a file in plain text, added to separate generate_rsa_keys() function
     # Save the private key to a file
     with open("private_key.pem", "wb") as f:
@@ -153,6 +158,11 @@ def save_keys_to_file_Plain():   # This function saves the keys to a file in pla
 
     print("RSA key pair generated and saved to files.")
     
+    
+    
+# Before we save our crypto keys we prompt user if they want to print them to the screen
+ 
+#>>>>>>>>>>   
 def print_Keys_to_screen():  # This function prints the keys to the screen, added to separate generate_rsa_keys() function
     
     # Print the private key
@@ -174,14 +184,27 @@ def print_Keys_to_screen():  # This function prints the keys to the screen, adde
     print(f"\n<------------------End of Public Key------------------------------>\n{RESET}")
 
 
-if __name__ == "__main__":
+#<<<<<<<<<<<<<<<<<<<<####################>>>>>>>>>>>>>>>>>>>>
+# Start program
+
+user_response = input("\n\nWould you like to enter EncryptVault? (y/n): ")
+if user_response == "y":
+    intro()
+else:
+    print("OK, Goodbye\n\n")
+    exit()
+        
+print("\nWould you like to generate new Public and Private 4096 RSA keys?")
+
+user_response_2 = input("Please enter y/n: ")
+if user_response_2 == "y":
     generate_rsa_keys()
-    
+    print("\n\nCongratulations! Your keys have been generated.")
 
-input("We made it past key generation, would you like to continue?")
+input("\n\n\nWe made it past key generation, would you like to continue?")
 
 
-# before we generate keys we prompt the user and ask if they want to make keys
+
 
 ''' PUBLIC & PRIVATE KEY generation'''
 #------code block B-----Prompt user for Public and Private KEY generation---------------------------------
