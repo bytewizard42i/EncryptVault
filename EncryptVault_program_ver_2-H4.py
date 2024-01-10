@@ -62,12 +62,15 @@ and return the actual ev version which installed on the actual device'''
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 # welcome intro
-# ANSI escape code for green text
+
 GREEN = "\033[92m"  # Text color = Bright Green
 BLUE = "\033[94m"
 RED = "\033[91m"    # Text color = Red
 ITALIC = "\033[3m"
 RESET = "\033[0m"   # Reset to default color
+
+_def_x = print(F"{BLUE}<----------->{RESET}") # Each time this is called, it prints a blue line to mark definition of a new function
+
 
 # example: print(f"{GREEN}This text will be green.{RESET}")
 
@@ -112,6 +115,7 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import rsa
 
+print(F"{BLUE}<----------->{RESET}")
 def generate_rsa_keys():
     # Generate a 4096-bit RSA private key
     private_key = rsa.generate_private_key(
@@ -135,7 +139,9 @@ def generate_rsa_keys():
         encoding=serialization.Encoding.PEM,
         format=serialization.PublicFormat.SubjectPublicKeyInfo
     )
+ 
     
+print(F"{BLUE}<----------->{RESET}")   
 def save_keys_to_file_Plain():   # This function saves the keys to a file in plain text, added to separate generate_rsa_keys() function
     # Save the private key to a file
     with open("private_key.pem", "wb") as f:
