@@ -277,15 +277,15 @@ if answer_make_keys:  # Equivalent to if answer_make_keys == True:
     the data can be lost!'''
     
 
-    '''This code adds upper and lower case letters to the 4 digit serial code ensuring less chance of duplicates'''
+    '''<<<<<<<<<<This code adds upper and lower case letters to the 4 digit serial code ensuring less chance of duplicates>>>>>>>>'''
     # import random
     # import string
 
-    # Generate a 4-digit random alphanumeric string
+    #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Generate a 4-digit random alphanumeric string>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     CHARACTERS = string.ascii_letters + string.digits
     SERIAL_NUMBER = ''.join(random.choices(CHARACTERS, k=4))
 
-    # Save PEM KEY into the file
+    #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Save PEM KEY into the file>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     # red_private_key save to file
     red_private_filename = f'/tmp/EV_private_key_ser-{SERIAL_NUMBER}.pem'
     with open(red_private_filename, 'x') as file:
