@@ -140,6 +140,8 @@ def generate_rsa_keys():        # before we generate keys we prompt the user and
         encoding=serialization.Encoding.PEM,
         format=serialization.PublicFormat.SubjectPublicKeyInfo
     )
+    
+    print("\n\nCongratulations! Your keys have been generated.")
  
     
 # Before we save our crypto keys we prompt user if they want to save them to a file
@@ -187,19 +189,24 @@ def print_Keys_to_screen():  # This function prints the keys to the screen, adde
 #<<<<<<<<<<<<<<<<<<<<####################>>>>>>>>>>>>>>>>>>>>
 # Start program
 
-user_response = input("\n\nWould you like to enter EncryptVault? (y/n): ")
-if user_response == "y":
+user_response_enter = input("\n\nWould you like to enter EncryptVault? (y/n): ")
+if user_response_enter == "y":
     intro()
 else:
     print("OK, Goodbye\n\n")
     exit()
+    
         
-print("\nWould you like to generate new Public and Private 4096 RSA keys?")
-
-user_response_2 = input("Please enter y/n: ")
-if user_response_2 == "y":
+print("\n\nWould you like to generate new Public and Private 4096 RSA keys?")
+user_response_generate = input("Please enter y/n: ")
+if user_response_generate == "y":
     generate_rsa_keys()
-    print("\n\nCongratulations! Your keys have been generated.")
+    
+print("\n\nWould you like to print your new Public and Private keys to screen?")
+user_response_print_keys = input("Please enter y/n: ")
+if user_response_print_keys == "y":
+    generate_rsa_keys()   
+    
 
 input("\n\n\nWe made it past key generation, would you like to continue?")
 
