@@ -87,6 +87,8 @@ def intro():
     #     print("         ***Warning! You are not currently running the latest version of EncryptVault***")
     #     print("            For security reasons, please update by clicking here: <Update Now>\n")
         
+    
+    print("I will be your guide through this process.")  # future functionality, allow user to hover over words for definitions and explanations
     print("Lets begin...")
 
     # future functionality...
