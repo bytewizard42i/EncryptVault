@@ -78,7 +78,7 @@ def intro():
         f"safely, digitally, store all of your crypto-wallet seed phrases and private keys.{RESET}")
     
     slow_type(f"{GREEN}{ITALIC}\n\"Never, ever, lose access to your crypto seed phrases and wallets, ever ,"
-        f"no matter what\"** -J. Santi\n{RESET}", delay=0.05)
+        f"no matter what\"** -J. Santi\n{RESET}", delay=0.01)
 
     # print("EncryptVault Version-",ev_version)
     # # if ev_version = latest_ev_version, print("You are running the latest version of EncryptVault")
@@ -163,15 +163,6 @@ def generate_rsa_keys():        # before we generate keys we prompt the user and
         format=serialization.PublicFormat.SubjectPublicKeyInfo
     )
     
-    print("\n\nCongratulations! Your keys have been generated.")
- 
-    
-# Before we save our crypto keys we prompt user if they want to save them to a file
-
-# !!!!!!!!Make sure that the files cannot be overwritten and that there is a 4 digit random string serial identifyer for the corresponding KEY pairs. Since Private KEY-A only decrypts Public KEY-A, we cannot get the KEY files confused or the data can be lost!!!!!!!!!
-
-#>>>>>>>>>>
-def save_keys_to_file_Plain():   # This function saves the keys to a file in plain text, added to separate generate_rsa_keys() function
     # Save the private key to a file
     with open("private_key.pem", "wb") as f:
         f.write(private_key_pem)
@@ -180,14 +171,8 @@ def save_keys_to_file_Plain():   # This function saves the keys to a file in pla
     with open("public_key.pem", "wb") as f:
         f.write(public_key_pem)
 
-    print("RSA key pair generated and saved to files.")
-    
-    
-    
-# Before we save our crypto keys we prompt user if they want to print them to the screen
- 
-#>>>>>>>>>>   
-def print_Keys_to_screen():  # This function prints the keys to the screen, added to separate generate_rsa_keys() function
+       
+    print("\n\nCongratulations! Your keys have been generated and saved to file.")
     
     # Print the private key
     print("\n<----------------------------------------------------------------->")
@@ -206,6 +191,11 @@ def print_Keys_to_screen():  # This function prints the keys to the screen, adde
     print(f"\n<------------------Beginning of Public Key------------------------------>\n")
     print(public_key_pem.decode())
     print(f"\n<------------------End of Public Key------------------------------>\n{RESET}")
+ 
+    
+# !!!!!!!!Make sure that the files cannot be overwritten and that there is a 4 digit random string serial identifyer for the corresponding KEY pairs. Since Private KEY-A only decrypts Public KEY-A, we cannot get the KEY files confused or the data can be lost!!!!!!!!!
+
+ 
 
 
 #<<<<<<<<<<<<<<<<<<<<####################>>>>>>>>>>>>>>>>>>>>
@@ -219,18 +209,16 @@ else:
     exit()
     
         
-print("\n\nWould you like to generate new Public and Private 4096 RSA keys?")
+print("\n\nWould you like to generate new Public and Private 4096 RSA keys and save to file?")
+print(f"{RED}Warning! the keys will display on the screen when created and saved, be sure that you have neccessary privacy{RESET}")
 user_response_generate = input("Please enter y/n: ")
 if user_response_generate == "y":
     generate_rsa_keys()
     
-print("\n\nWould you like to print your new Public and Private keys to screen?")
-user_response_print_keys = input("Please enter y/n: ")
-if user_response_print_keys == "y":
-    generate_rsa_keys()   
+    
     
 
-
+Print("Clear to 230")
 
 
 ''' PUBLIC & PRIVATE KEY generation'''
