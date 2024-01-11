@@ -76,8 +76,9 @@ def intro():
     print(f"\n{BLUE}{ITALIC}<----------------------------------------------------------------->\n"
         f"Welcome, my dear friend, to EncryptVault!\nThis is your place to "
         f"safely, digitally, store all of your crypto-wallet seed phrases and private keys.{RESET}")
-    print(f"{GREEN}{ITALIC}\n\"Never, ever, lose access to your crypto seed phrases and wallets, ever ,"
-        f"no matter what\"** -J. Santi\n{RESET}")
+    
+    slow_type(f"{GREEN}{ITALIC}\n\"Never, ever, lose access to your crypto seed phrases and wallets, ever ,"
+        f"no matter what\"** -J. Santi\n{RESET}", delay=0.05)
 
     # print("EncryptVault Version-",ev_version)
     # # if ev_version = latest_ev_version, print("You are running the latest version of EncryptVault")
@@ -116,8 +117,18 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import rsa
 
+import time  #This allows us to use the time function to create a delay 
 
 
+#>>>>>>>>>>
+def slow_type(text, delay=0.1):
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(delay)
+    print()  # for newline after the typing effect
+
+                # Example usage
+                # type_like_effect("Hello, this is being 'typed' out!", delay=0.1)
 
 #>>>>>>>>>>
 def generate_rsa_keys():        # before we generate keys we prompt the user and ask if they want to make keys
