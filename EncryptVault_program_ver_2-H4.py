@@ -119,6 +119,13 @@ from cryptography.hazmat.primitives.asymmetric import rsa
 #>>>>>>>>>>
 def generate_rsa_keys():        # before we generate keys we prompt the user and ask if they want to make keys
     # Generate a 4096-bit RSA private key
+    
+    # Let user know that generating keys may take a bit of time
+    print("\033[32mOK, you chose yes\033[0m\n")
+    print("It takes a bit to create these extremely long and secure keys")
+    print("Please be patient while I create the keys and save your backup to your EncryptVault device")
+    
+    
     private_key = rsa.generate_private_key(
         public_exponent=65537,
         key_size=4096,
@@ -208,8 +215,6 @@ if user_response_print_keys == "y":
     generate_rsa_keys()   
     
 
-input("\n\n\nWe made it past key generation, would you like to continue?")
-
 
 
 
@@ -231,9 +236,7 @@ def ask_yes_no_question(prompt):
 answer_make_keys = ask_yes_no_question("Please enter y/n: ")
 
 if answer_make_keys:  # Equivalent to if answer_make_keys == True:
-    print("\033[32mOK, you chose yes\033[0m\n")
-    print("It takes a bit to create these extremely long and secure keys")
-    print("Please be patient while I create the keys and save your backup to your EncryptVault device")
+    
     # else argument skips generate Asymetric KEYS
    
 
