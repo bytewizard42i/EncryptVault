@@ -218,7 +218,7 @@ if user_response_generate == "y":
     
     
 
-Print("Clear to 230")
+print("Clear to 230")
 
 
 ''' PUBLIC & PRIVATE KEY generation'''
