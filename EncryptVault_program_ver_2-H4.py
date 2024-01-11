@@ -68,6 +68,7 @@ BLUE = "\033[94m"                   # example: print(f"{GREEN}This text will be 
 RED = "\033[91m"    # Text color = Red
 ITALIC = "\033[3m"
 RESET = "\033[0m"   # Reset to default color
+YELLOW = "\033[93m" # Text color = Yellow
 
 
 #>>>>>>>>>>
@@ -86,7 +87,7 @@ def intro():
     #     print("         ***Warning! You are not currently running the latest version of EncryptVault***")
     #     print("            For security reasons, please update by clicking here: <Update Now>\n")
         
-    print("Lets begin...\n")
+    print("Lets begin...")
 
     # future functionality...
     # call usb drive for status on your usb stick. 0 = none inserted, 1 = non-password protected USB inserted, 
@@ -121,9 +122,10 @@ def generate_rsa_keys():        # before we generate keys we prompt the user and
     # Generate a 4096-bit RSA private key
     
     # Let user know that generating keys may take a bit of time
-    print("\033[32mOK, you chose yes\033[0m\n")
-    print("It takes a bit to create these extremely long and secure keys")
-    print("Please be patient while I create the keys and save your backup to your EncryptVault device")
+    print(f"{GREEN}OK, you chose yes{RESET}\n")
+    print(f"{YELLOW}It takes a bit to create these extremely long and secure keys")
+    print(f"Please be patient and allow the keys to generate without exiting the program.")
+    print(f"I will give you a tone when the keys are ready.{RESET}")
     
     
     private_key = rsa.generate_private_key(
@@ -196,7 +198,7 @@ def print_Keys_to_screen():  # This function prints the keys to the screen, adde
 #<<<<<<<<<<<<<<<<<<<<####################>>>>>>>>>>>>>>>>>>>>
 # Start program
 
-user_response_enter = input("\n\nWould you like to enter EncryptVault? (y/n): ")
+user_response_enter = input("\nWould you like to enter EncryptVault? (y/n): ")
 if user_response_enter == "y":
     intro()
 else:
