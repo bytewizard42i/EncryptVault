@@ -122,7 +122,7 @@ def generate_rsa_keys():        # before we generate keys we prompt the user and
     # Generate a 4096-bit RSA private key
     
     # Let user know that generating keys may take a bit of time
-    print(f"{GREEN}OK, you chose yes{RESET}\n")
+    print(f"{GREEN}OK, you chose yes to generate new public and private keys:{RESET}\n")
     print(f"{YELLOW}It takes a bit to create these extremely long and secure keys")
     print(f"Please be patient and allow the keys to generate without exiting the program.")
     print(f"I will give you a tone when the keys are ready.{RESET}")
