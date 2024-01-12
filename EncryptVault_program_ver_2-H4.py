@@ -89,8 +89,8 @@ def intro():
     #     print("            For security reasons, please update by clicking here: <Update Now>\n")
         
     
-    print("I will be your guide through this process.")  # future functionality, allow user to hover over words for definitions and explanations
-    print("Lets begin...")
+    slow_type(f"I will be your guide through this process.\nLet's begin...", delay=0.01)  # future functionality, allow user to hover over words for definitions and explanations
+    
 
     # future functionality...
     # call usb drive for status on your usb stick. 0 = none inserted, 1 = non-password protected USB inserted, 
