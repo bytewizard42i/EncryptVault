@@ -210,7 +210,7 @@ else:
     
         
 print("\n\nWould you like to generate new Public and Private 4096 RSA keys and save to file?")
-print(f"{RED}Warning! the keys will display on the screen when created and saved, be sure that you have neccessary privacy{RESET}")
+print(f"{YELLOW}Warning! the keys will display on the screen when created and saved, be sure that you have neccessary privacy{RESET}")
 user_response_generate = input("Please enter y/n: ")
 if user_response_generate == "y":
     generate_rsa_keys()
