@@ -150,6 +150,8 @@ def generate_rsa_keys():        # before we generate keys we prompt the user and
     # Get the public key from the private key
     public_key = private_key.public_key()
     
+    return private_key, public_key
+    
     # Serialize private key to PEM format
     private_key_pem = private_key.private_bytes(
         encoding=serialization.Encoding.PEM,
