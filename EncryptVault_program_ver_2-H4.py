@@ -134,49 +134,50 @@ def slow_type(text, delay=0.1):
 def generate_rsa_keys():        # before we generate keys we prompt the user and ask if they want to make keys
     # Generate a 4096-bit RSA private key
     
-    # Let user know that generating keys may take a bit of time
+    #* Let user know that generating keys may take a bit of time
     print(f"{GREEN}OK, you chose yes to generate new public and private keys:{RESET}\n")
     print(f"{YELLOW}It takes a bit to create these extremely long and secure keys")
     print(f"Please be patient and allow the keys to generate without exiting the program.")
     print(f"I will give you a tone when the keys are ready.{RESET}")
     
     
+    #* Private key inserted into variable with parameters
     private_key = rsa.generate_private_key(
         public_exponent=65537,
         key_size=4096,
         backend=default_backend()
     )
 
-    # Get the public key from the private key
+    #* Get the public key from the private key and insert into variable
     public_key = private_key.public_key()
     
     return private_key, public_key
     
-    # Serialize private key to PEM format
+    #* Serialize private key to PEM format
     private_key_pem = private_key.private_bytes(
         encoding=serialization.Encoding.PEM,
         format=serialization.PrivateFormat.PKCS8,
         encryption_algorithm=serialization.NoEncryption()
     )
 
-    # Serialize public key to PEM format
+    #* Serialize public key to PEM format
     public_key_pem = public_key.public_bytes(
         encoding=serialization.Encoding.PEM,
         format=serialization.PublicFormat.SubjectPublicKeyInfo
     )
     
-    # Save the private key to a file
+    #* Save the private key to a file
     with open("private_key.pem", "wb") as f:
         f.write(private_key_pem)
 
-    # Save the public key to a file
+    #* Save the public key to a file
     with open("public_key.pem", "wb") as f:
         f.write(public_key_pem)
 
        
     print("\n\nCongratulations! Your keys have been generated and saved to file.")
     
-    # Print the private key
+    #* Print the private key
     print("\n<----------------------------------------------------------------->")
     print(f"{RED}{ITALIC}WARNING! Never let anyone see this code that you don't want "
           f"to have FULL ACCESS to your crypto wallet.\nDo not take photos of this "
@@ -186,7 +187,7 @@ def generate_rsa_keys():        # before we generate keys we prompt the user and
     print(private_key_pem.decode())
     print(f"\n{RED}<------------------End of Private Key------------------------------>\n{RESET}")
     
-    # Print the public key
+    #* Print the public key
     print("\n<----------------------------------------------------------------->")
     print(f"{GREEN}{ITALIC}This is your public key for encryption."
           f"\nIt may be shared with anyone you wish,\nand stored anywhere as text or QR code.")
