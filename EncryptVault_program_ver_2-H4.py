@@ -71,7 +71,7 @@ RESET = "\033[0m"   # Reset to default color
 YELLOW = "\033[93m" # Text color = Yellow
 
 
-#>>>>>>>>>>
+#*>>>>>>>>>
 def intro():
     print(f"\n{BLUE}{ITALIC}<----------------------------------------------------------------->\n"
         f"Welcome, my dear friend, to EncryptVault!\nThis is your place to "
@@ -120,7 +120,7 @@ from cryptography.hazmat.primitives.asymmetric import rsa
 import time  #This allows us to use the time function to create a delay 
 
 
-#>>>>>>>>>>
+#*>>>>>>>>>
 def slow_type(text, delay=0.1):
     for char in text:
         print(char, end='', flush=True)
@@ -130,7 +130,7 @@ def slow_type(text, delay=0.1):
                 # Example usage
                 # type_like_effect("Hello, this is being 'typed' out!", delay=0.1)
 
-#>>>>>>>>>>
+#*>>>>>>>>>
 def generate_rsa_keys():        # before we generate keys we prompt the user and ask if they want to make keys
     # Generate a 4096-bit RSA private key
     
@@ -200,7 +200,7 @@ def generate_rsa_keys():        # before we generate keys we prompt the user and
  
 
 
-#<<<<<<<<<<<<<<<<<<<<####################>>>>>>>>>>>>>>>>>>>>
+#*<<<<<<<<<<<<<<<<<<<####################>>>>>>>>>>>>>>>>>>>>
 # Start program
 
 user_response_enter = input("\nWould you like to enter EncryptVault? (y/n): ")
@@ -230,6 +230,7 @@ if user_response_generate == "y":
 print("Would you like to create a new Public and Private KEY?")
 
 # Prompts y/n question, returns True/False
+#*>>>>>>>>>
 def ask_yes_no_question(prompt):
     while True:
         response = input(prompt).lower()
@@ -256,7 +257,8 @@ if answer_make_keys:  # Equivalent to if answer_make_keys == True:
 
     
         
-    # Generate a 4096-bit RSA private key
+    # Generate a 4096-bit RSA private 
+    #*>>>>>>>>>
     def generate_rsa_keys():
         key = rsa.generate_private_key(
             public_exponent=65537,
@@ -283,11 +285,11 @@ if answer_make_keys:  # Equivalent to if answer_make_keys == True:
     # import random
     # import string
 
-    #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Generate a 4-digit random alphanumeric string>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    #*<<<<<<<< Generate a 4-digit random alphanumeric string >>>>>>>>>>>>>
     CHARACTERS = string.ascii_letters + string.digits
     SERIAL_NUMBER = ''.join(random.choices(CHARACTERS, k=4))
 
-    #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Save PEM KEY into the file>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    #*<<<<<<<< Save PEM KEY into the file >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     # red_private_key save to file
     red_private_filename = f'/tmp/EV_private_key_ser-{SERIAL_NUMBER}.pem'
     with open(red_private_filename, 'x') as file:
@@ -321,6 +323,7 @@ else:
 import subprocess
 import sys
 
+#*>>>>>>>>>
 def check_usb_drive():
     out = subprocess.check_output('wmic logicaldisk get DriveType, caption', shell=True)
 
@@ -340,10 +343,12 @@ def check_usb_drive():
     if not usb_detected:
         print("No USB drive detected")
 
+#*>>>>>>>>>
 def prompt_continue():
     response = input("Would you like to check again for the presence of a USB drive? (y/n) ")
     return response.lower() == 'y'
 
+#*>>>>>>>>>
 def main():
     check_usb = input("Would you like to check for the presence of an inserted USB drive? (y/n) ")
     if check_usb.lower() == 'y':
@@ -382,6 +387,7 @@ print("End 'Check for USB' subroutine\n")
 import subprocess
 import sys
 
+#*>>>>>>>>>
 def get_usb_drive_letter():
     out = subprocess.check_output('wmic logicaldisk get DriveType, Caption', shell=True)
     drives = str(out).strip().split('\\r\\r\\n')
@@ -392,6 +398,7 @@ def get_usb_drive_letter():
 
     return None
 
+#*>>>>>>>>>
 def format_usb_drive(usb_drive):
     # Prompt the user to confirm if they want to format the USB drive
     format_confirmation = input(f"\n\033[31m!!!Warning!!! The following action will erase all information on\nthe USB drive inserted in drive: {usb_drive}, and is IRREVERSIBLE!!!\033[0m\n  \033[33mDo you want to format the USB drive located at drive: {usb_drive}? (y/n) \033[0m")
@@ -413,6 +420,7 @@ def format_usb_drive(usb_drive):
 
     print(f"\033[32mUSB drive {usb_drive} formatted successfully with label:\033[0m\033[34m '{drive_label}'.\033[0m")
 
+#*>>>>>>>>>
 def format_USB_main():
     usb_drive = get_usb_drive_letter()
 
@@ -442,6 +450,7 @@ from tkinter import filedialog
 import platform
 import psutil
 
+#*>>>>>>>>>
 def get_usb_drive_letter():
     if platform.system() == 'Windows':
         drives = psutil.disk_partitions()
@@ -456,6 +465,7 @@ def get_usb_drive_letter():
 
     return None
 
+#*>>>>>>>>>
 def save_file_to_usb():
     while True:
         # Create a new root window
@@ -525,6 +535,7 @@ from cryptography.hazmat.primitives import serialization, hashes
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
 from cryptography.hazmat.backends import default_backend
 
+#*>>>>>>>>>
 def generate_rsa_key_pair():
     # Generate a new RSA private key
     private_key = rsa.generate_private_key(
@@ -537,6 +548,7 @@ def generate_rsa_key_pair():
 
     return private_key, public_key
 
+#*>>>>>>>>>
 def save_key_to_file(key, filename):
     # Save the key to a file in PEM format
     with open(filename, "wb") as key_file:
@@ -546,6 +558,7 @@ def save_key_to_file(key, filename):
             encryption_algorithm=serialization.NoEncryption()
         ))
 
+#*>>>>>>>>>
 def load_key_from_file(filename):
     # Load a private key from a file in PEM format
     with open(filename, "rb") as key_file:
@@ -556,6 +569,7 @@ def load_key_from_file(filename):
         )
     return key
 
+#*>>>>>>>>>
 def encrypt_data(public_key, data):
     # Encrypt the data using the public key
     encrypted_data = public_key.encrypt(
@@ -568,11 +582,13 @@ def encrypt_data(public_key, data):
     )
     return encrypted_data
 
+#*>>>>>>>>>
 def save_data_to_file(data, filename):
     # Save the data to a file
     with open(filename, 'wb') as file:
         file.write(data)
 
+#*>>>>>>>>>
 def main_module_encrypt_data():
     # Prompt user for input data to be encrypted
     data = input("Enter data to be encrypted: ")
@@ -610,6 +626,7 @@ from cryptography.hazmat.primitives import serialization, hashes
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
 from cryptography.hazmat.backends import default_backend
 
+#*>>>>>>>>>
 def load_key_from_file(filename):
     with open(filename, "rb") as key_file:
         key = serialization.load_pem_private_key(
@@ -618,7 +635,7 @@ def load_key_from_file(filename):
             backend=default_backend()
         )
     return key
-
+#*>>>>>>>>>
 def decrypt_data(private_key, encrypted_data):
     decrypted_data = private_key.decrypt(
         encrypted_data,
@@ -630,10 +647,12 @@ def decrypt_data(private_key, encrypted_data):
     )
     return decrypted_data.decode('utf-8')
 
+#*>>>>>>>>>
 def save_data_to_file(data, filename):
     with open(filename, 'w') as file:
         file.write(data)
 
+#*>>>>>>>>>
 def main():
     # Prompt user to plug in the USB drive
     input("Please plug in the USB drive containing the decryption key file and press Enter to continue...")
@@ -682,6 +701,7 @@ import qrcode
 import tkinter as tk
 from tkinter import filedialog
 
+#*>>>>>>>>>
 def capture_qr_code():
     root = tk.Tk()
     root.withdraw()
@@ -700,6 +720,7 @@ def capture_qr_code():
     
     return decrypted_data
 
+#*>>>>>>>>>
 def label_qr_code(qr_code_image, label_text):
     # Add label text above the QR code
     qr_code_width, qr_code_height = qr_code_image.size
@@ -714,9 +735,11 @@ def label_qr_code(qr_code_image, label_text):
     
     return qr_code_with_label
 
+#*>>>>>>>>>
 def save_qr_code(qr_code_image, filename):
     qr_code_image.save(filename, "JPEG")
 
+#*>>>>>>>>>
 def main():
     # Prompt user to capture the QR code
     print("Please capture the QR code containing the encrypted data.")
