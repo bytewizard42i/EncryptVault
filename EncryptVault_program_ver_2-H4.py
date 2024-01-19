@@ -147,11 +147,11 @@ def generate_rsa_keys():        # before we generate keys we prompt the user and
         key_size=4096,
         backend=default_backend()
     )
-
+    # return private_key
     #* Get the public key from the private key and insert into variable
     public_key = private_key.public_key()
     
-    return private_key, public_key
+    # return public_key
     
     #* Serialize private key to PEM format
     private_key_pem = private_key.private_bytes(
@@ -214,8 +214,8 @@ else:
         
 print("\n\nWould you like to generate new Public and Private 4096 RSA keys and save to file?")
 print(f"{YELLOW}Warning! the keys will display on the screen when created and saved, be sure that you have neccessary privacy{RESET}")
-user_response_generate = input("Please enter y/n: ")
-if user_response_generate == "y":
+user_response_generate_2 = input("Please enter y/n: ")
+if user_response_generate_2 == "y":
     generate_rsa_keys()
     
     
@@ -224,92 +224,92 @@ if user_response_generate == "y":
 #print("Clear to 221")
 
 
-''' PUBLIC & PRIVATE KEY generation'''
-#------code block B-----Prompt user for Public and Private KEY generation---------------------------------
-#--------------------------------------------------------------------------------------------------------
-# Prompt user if they wish to create a new Public and Private Key
-print("Would you like to create a new Public and Private KEY?")
+# ''' PUBLIC & PRIVATE KEY generation'''
+# #------code block B-----Prompt user for Public and Private KEY generation---------------------------------
+# #--------------------------------------------------------------------------------------------------------
+# # Prompt user if they wish to create a new Public and Private Key
+# print("Would you like to create a new Public and Private KEY?")
 
-# Prompts y/n question, returns True/False
-#*>>>>>>>>>
-def ask_yes_no_question(prompt):
-    while True:
-        response = input(prompt).lower()
-        if response in ['y', 'n']:
-            return response == 'y'
-        else:
-            print("Invalid input. Please enter 'y' or 'n'.")
+# # Prompts y/n question, returns True/False
+# #*>>>>>>>>>
+# def ask_yes_no_question(prompt):
+#     while True:
+#         response = input(prompt).lower()
+#         if response in ['y', 'n']:
+#             return response == 'y'
+#         else:
+#             print("Invalid input. Please enter 'y' or 'n'.")
 
-answer_make_keys = ask_yes_no_question("Please enter y/n: ")
+# answer_make_keys = ask_yes_no_question("Please enter y/n: ")
 
-if answer_make_keys:  # Equivalent to if answer_make_keys == True:
+# if answer_make_keys:  # Equivalent to if answer_make_keys == True:
     
-    # else argument skips generate Asymetric KEYS
+#     # else argument skips generate Asymetric KEYS
    
 
-    '''generate Asymetric KEYS'''
-    #----code block B.2----------generate RSA Keys and store in PEM format----------------------
-    #---------------------------------------------------------------------------------------
+#     '''generate Asymetric KEYS'''
+#     #----code block B.2----------generate RSA Keys and store in PEM format----------------------
+#     #---------------------------------------------------------------------------------------
      
-    from cryptography.hazmat.backends import default_backend
-    from cryptography.hazmat.primitives import serialization
-    from cryptography.hazmat.primitives.asymmetric import rsa
+#     from cryptography.hazmat.backends import default_backend
+#     from cryptography.hazmat.primitives import serialization
+#     from cryptography.hazmat.primitives.asymmetric import rsa
 
 
     
         
-    # Generate a 4096-bit RSA private 
-    #*>>>>>>>>>
-    def generate_rsa_keys():
-        key = rsa.generate_private_key(
-            public_exponent=65537,
-            key_size=4096,
-            backend=default_backend()
-    )
+#     # Generate a 4096-bit RSA private 
+#     #*>>>>>>>>>
+#     def generate_rsa_keys():
+#         key = rsa.generate_private_key(
+#             public_exponent=65537,
+#             key_size=4096,
+#             backend=default_backend()
+#     )
         
-        # Export RSA public/private KEY in PEM format
-        red_private_key = key.exportKey('PEM').decode('utf-8')
-        print("This is your Red Pill Private Key:\n", red_private_key)
+#         # Export RSA public/private KEY in PEM format
+#         red_private_key = key.exportKey('PEM').decode('utf-8')
+#         print("This is your Red Pill Private Key:\n", red_private_key)
 
-        green_public_key = key.publickey().exportKey('PEM').decode('utf-8')
-        print("This is your Green Pill Public Key:\n", green_public_key)
+#         green_public_key = key.publickey().exportKey('PEM').decode('utf-8')
+#         print("This is your Green Pill Public Key:\n", green_public_key)
     
     
 
-    ''' before we save our crypto keys we have to make sure that the files cannot be overwritten
-    and that there is a 4 digit random string serial identifyer for the corresponding KEY
-    pairs. Since Private KEY-A only decrypts Public KEY-A, we cannot get the KEY files confused or 
-    the data can be lost!'''
+#     ''' before we save our crypto keys we have to make sure that the files cannot be overwritten
+#     and that there is a 4 digit random string serial identifyer for the corresponding KEY
+#     pairs. Since Private KEY-A only decrypts Public KEY-A, we cannot get the KEY files confused or 
+#     the data can be lost!'''
     
 
-    '''<<<<<<<<<<This code adds upper and lower case letters to the 4 digit serial code ensuring less chance of duplicates>>>>>>>>'''
-    # import random
-    # import string
+#     '''<<<<<<<<<<This code adds upper and lower case letters to the 4 digit serial code ensuring less chance of duplicates>>>>>>>>'''
+#     # import random
+#     # import string
 
-    #*<<<<<<<< Generate a 4-digit random alphanumeric string >>>>>>>>>>>>>
-    CHARACTERS = string.ascii_letters + string.digits
-    SERIAL_NUMBER = ''.join(random.choices(CHARACTERS, k=4))
+#     #*<<<<<<<< Generate a 4-digit random alphanumeric string >>>>>>>>>>>>>
+#     CHARACTERS = string.ascii_letters + string.digits
+#     SERIAL_NUMBER = ''.join(random.choices(CHARACTERS, k=4))
 
-    #*<<<<<<<< Save PEM KEY into the file >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    # red_private_key save to file
-    red_private_filename = f'/tmp/EV_private_key_ser-{SERIAL_NUMBER}.pem'
-    with open(red_private_filename, 'x') as file:
-        file.write(red_private_key)
-    # Set file permissions to read-only
-    os.chmod(red_private_filename, 0o400)
+#     #*<<<<<<<< Save PEM KEY into the file >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#     # red_private_key save to file
+#     red_private_filename = f'/tmp/EV_private_key_ser-{SERIAL_NUMBER}.pem'
+#     with open(red_private_filename, 'x') as file:
+#         file.write(red_private_key)
+#     # Set file permissions to read-only
+#     os.chmod(red_private_filename, 0o400)
 
-    # green_public_key save to file
-    green_public_filename = f'/tmp/EV_public_key_ser-{SERIAL_NUMBER}.pem'
-    with open(green_public_filename, 'x') as file:
-        file.write(green_public_key)
+#     # green_public_key save to file
+#     green_public_filename = f'/tmp/EV_public_key_ser-{SERIAL_NUMBER}.pem'
+#     with open(green_public_filename, 'x') as file:
+#         file.write(green_public_key)
 
-    # Set file permissions to read-only
-    os.chmod(green_public_filename, 0o400)
+#     # Set file permissions to read-only
+#     os.chmod(green_public_filename, 0o400)
     
-else:
-    print("\033[32mYou chose 'no'. Skipping the KEY generation process.\033[0m\n")
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-#^^^^^End Code Block B^^^^^generate RSA Keys and store in PEM format^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# else:
+#     print("\033[32mYou chose 'no'. Skipping the KEY generation process.\033[0m\n")
+# #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# #^^^^^End Code Block B^^^^^generate RSA Keys and store in PEM format^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     
 
 # print("\nOK -> Line 148\n")
