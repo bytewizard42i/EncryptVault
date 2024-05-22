@@ -12,7 +12,7 @@ Not only would it make it safer and easier to handle cryptocurrency wallet seed 
 
 For these past three years, I have been developing EncryptVault, a protocol and hardware device system to greatly reduce some of the most prevalent hurdles and dangers associated with cryptocurrency wallet seed phrase and private key storage and protection. I have dedicated my life to cryptocurrency and blockchain. I have had thousands of hours of study, I am currently earning my BA in Computer Science, and I own a cryptocurrency news aggregation site called Crypto Financial World: https://www.linkedin.com/in/john-santi/ https://www.linkedin.com/company/cryptofinancialworld/
 
-Mlabs https://mlabs.city/team has agreed to assist us with the production of my EncryptVault system if we could get the finding.
+Mlabs https://mlabs.city/team has agreed to assist us with the production of my EncryptVault system if we could get the funding.
 
 EncryptVault has two possible tracks, or a combination of the two.
 
