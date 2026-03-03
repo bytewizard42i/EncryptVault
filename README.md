@@ -1,23 +1,71 @@
-# EncryptVault
-## This is the repository for the EncryptVault.io program
-### We own URL: https://EncryptVault.io
+# EncryptVault — Secure Seed Phrase & Private Key Storage
 
-Hello dear friends. This is the original public repository for the fully open source EncryptVault program 7-9-2023. "Safely, digitally, store all your crypto wallet seed phrases and private keys." Here is a link to the website: https://EncryptVault.io This version is about midway of 26 versions of the program I have saved. Please be patient, 2 years ago I was not a programmer, I am still not.
+**Safely, digitally, store all your crypto wallet seed phrases and private keys.**
 
-Back story: About three years ago, I fell in love with the dream of cryptocurrency. A dream of financial autonomy, the freedom of self-custody (self-banking), freedom of association, and the self-ownership of one's own identity.
+**Website**: [EncryptVault.io](https://EncryptVault.io)  
+**Company**: [EnterpriseZK Labs LLC](https://enterprisezk.com)  
+**License**: Open Source  
+**Status**: Utility — Active
 
-Navigating cryptocurrency purchasing and storage was an enormous learning curve for a non-technical layperson such as I was at the time. Within a few short months I had accumulated nearly 20 cryptocurrency wallets. It quickly became apparent to me the enormous complications, level of technical difficulty, and the dangers associated with trying to store the seed phrases for all those wallets. I believed there had to be a better way and I began to form an idea for a protocol and hardware device system which would greatly reduce, both the complexity, and risk of self-custody.
+---
 
-Not only would it make it safer and easier to handle cryptocurrency wallet seed phrases and private keys, but it is likely that it will improve public sentiment and trust in cryptocurrency, fostering unprecedented adoption. In 2017, a financial company called FIS was the first institution to allow crypto payments with credit cards, ushering in the largest crypto bull run in history. I believe that if we can pull off what I am trying to do here, we can beat that bull run.
+## The Problem
 
-For these past three years, I have been developing EncryptVault, a protocol and hardware device system to greatly reduce some of the most prevalent hurdles and dangers associated with cryptocurrency wallet seed phrase and private key storage and protection. I have dedicated my life to cryptocurrency and blockchain. I have had thousands of hours of study, I am currently taking blockchain and coding courses, and I own a cryptocurrency news aggregation site called Crypto Financial World: https://www.linkedin.com/in/john-santi/ https://www.linkedin.com/company/cryptofinancialworld/
+Self-custody is the promise of cryptocurrency — but it comes with a terrifying catch: **lose your seed phrase, lose everything.**
 
-Mlabs https://mlabs.city/team has agreed to assist us with the production of my EncryptVault system if we could get the funding.
+- The average crypto user manages 5-20+ wallets across different chains
+- Each wallet has a 12-24 word seed phrase that must be stored perfectly
+- Paper backups degrade, get lost in fires/floods, or are found by the wrong person
+- Hardware wallets protect one key but don't solve multi-wallet management
+- Password managers weren't designed for seed phrases and don't address crypto-specific threats
+- An estimated **$140 billion in Bitcoin alone** is permanently locked in lost wallets
 
-EncryptVault has two possible tracks, or a combination of the two.
+## The Solution
 
-Fast, but expensive track: • Mlabs https://mlabs.city/ , has agreed (in writing without signature), to a tiered build-out of the EncryptVault system (contingent upon my ability to raise the necessary funding. Phase I of the build-out would be scientific whitepapers with market analysis and professional peripherals for investors. • Afissio https://www.afissio.com/ , has agreed to create the corporation, the corporate structure, legal safeguards, as well as investment structure (shares for investment). They would also provide many initial legal service and counsel. • The cost for these two separate services is estimated to be approximately $50,000.00/USD with a 10% margin for overages and unforeseen costs.
+EncryptVault is a protocol and hardware device system designed to **drastically reduce the complexity and risk** of cryptocurrency seed phrase storage and protection.
 
-Slower, but more cost effective track:We build out EncryptVault here and then begin working on the harware aspect of the company.
+### Core Capabilities
 
-There is another side to this idea. I am also tackling self identity with Ai assistance as the gate keeper of a sort of "Soul-Token" It's a multifactor authorization protocol which will be an API that will use a variety of identity items to determine a minimum threshold of is it you. The name of this company will be ItsMeAi, the URL will be itsmeai.io (I already have the URL) Join me on this fantastic journey, at worst we end up with a cool alternative way to store our crypto wallet seed phrases, at best, we change the world and make some money. I have a lot of debt, and I would sure like to start fresh. Want to be a part of the company? Let me know. You know how to get funding? Let me know. Welcome.
+- **Multi-wallet management** — Store seed phrases for all your wallets in one encrypted vault
+- **Hardware-backed security** — Physical device component prevents remote-only attacks
+- **Encryption protocol** — Purpose-built encryption for seed phrase storage (not repurposed password management)
+- **Recovery mechanism** — Designed with recovery paths that don't compromise security
+
+---
+
+## Origin Story
+
+EncryptVault was born from firsthand experience. In 2022, after accumulating nearly 20 cryptocurrency wallets, the founder experienced the overwhelming complexity and danger of trying to safely store all those seed phrases. This wasn't a theoretical problem — it was a daily anxiety shared by millions of crypto holders.
+
+The vision: What if storing crypto keys was as safe and simple as using a bank vault — but without trusting any third party?
+
+This initial work on EncryptVault directly led to the broader identity vision that became [DIDz.io](https://github.com/bytewizard42i/didz-dapp-system) — because the problem of "proving you are you" extends far beyond crypto wallets.
+
+---
+
+## Evolution Into the Ecosystem
+
+EncryptVault represents the **earliest product** in the EnterpriseZK portfolio. The identity and security concepts explored here evolved into:
+
+- **[DIDz.io](https://github.com/bytewizard42i/didz-dapp-system)** — The "Soul-Token" concept from EncryptVault became the foundation for DIDz's biometric-bound digital identity
+- **[DownMan](https://github.com/bytewizard42i/DownMan)** — The estate planning concern ("what happens to my crypto when I die?") became its own protocol with Shamir's Secret Sharing + PGP dead-man's switch
+- **[KYCz](https://github.com/bytewizard42i/KYCz_us_app)** — The identity verification concepts evolved into zero-knowledge KYC
+
+---
+
+## Technology
+
+- **Current**: Python-based encryption utility (v2-H4)
+- **Future**: Integration with Midnight Network for ZK-enhanced key management
+- **Hardware**: Hardware device component in planning
+
+---
+
+## Related Reading
+
+- [DeltaKey.io article (Medium, Oct 2023)](https://medium.com/@johnmsanti) — Early exploration of cryptographic key estate planning, the conceptual precursor to DownMan
+
+---
+
+*EnterpriseZK Labs LLC — [enterprisezk.com](https://enterprisezk.com)*  
+*The project that started it all.*
