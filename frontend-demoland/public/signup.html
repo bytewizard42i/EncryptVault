@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EncryptVault — Create Account</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+    <style>
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        body{font-family:'Rajdhani',sans-serif;background:#0a1117;color:#b0d4e8;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow-y:auto}
+        body::before{content:'';position:fixed;inset:0;background:linear-gradient(rgba(6,182,212,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(6,182,212,0.03) 1px,transparent 1px);background-size:40px 40px;z-index:0}
+        .c{position:relative;z-index:1;width:100%;max-width:520px;padding:24px;animation:fu .5s ease-out}
+        @keyframes fu{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+        .logo{text-align:center;margin-bottom:24px}
+        .logo-i{width:64px;height:64px;border-radius:16px;background:rgba(6,182,212,0.15);border:1px solid rgba(6,182,212,0.3);display:inline-flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:12px;box-shadow:0 0 30px rgba(6,182,212,0.2)}
+        .logo-t{font-size:28px;font-weight:700;letter-spacing:2px;color:#fff}.logo-t span{color:#06b6d4}
+        .logo-s{font-size:13px;color:rgba(176,212,232,0.5);margin-top:4px}
+        .banner{background:linear-gradient(135deg,rgba(255,191,0,0.15),rgba(255,140,0,0.1));border:1px solid rgba(255,191,0,0.3);color:#ffbf00;text-align:center;padding:6px;border-radius:8px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+        .pb{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:20px}
+        .ps{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:2px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.3);transition:all .3s}
+        .ps.active{border-color:#06b6d4;color:#06b6d4;background:rgba(6,182,212,0.1)}
+        .ps.done{border-color:#06b6d4;color:#0a1117;background:#06b6d4}
+        .pl{width:40px;height:2px;background:rgba(255,255,255,0.1);border-radius:1px}.pl.done{background:#06b6d4}
+        .card{background:rgba(10,17,23,0.9);border:1px solid rgba(6,182,212,0.12);border-radius:16px;padding:28px;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+        .sl{font-size:11px;font-weight:600;color:rgba(6,182,212,0.7);text-transform:uppercase;letter-spacing:2px;margin-bottom:4px}
+        .st{font-size:18px;font-weight:600;color:#fff;margin-bottom:16px}
+        .mg{display:flex;flex-direction:column;gap:8px}
+        .mb{display:flex;align-items:center;gap:12px;padding:12px 14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;cursor:pointer;transition:all .2s;text-align:left;color:inherit;font-family:inherit;font-size:inherit}
+        .mb:hover{border-color:rgba(6,182,212,0.3);background:rgba(6,182,212,0.05)}
+        .mi{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+        .mn{font-size:14px;font-weight:600;color:rgba(255,255,255,0.85);display:flex;align-items:center;gap:8px}
+        .md{font-size:11px;color:rgba(176,212,232,0.4);margin-top:2px}
+        .badge{font-size:9px;font-weight:700;text-transform:uppercase;padding:2px 6px;border-radius:4px;background:rgba(6,182,212,0.15);color:rgba(6,182,212,0.9)}
+        .fg{margin-bottom:14px}
+        .fl{display:block;font-size:12px;font-weight:600;color:rgba(176,212,232,0.6);margin-bottom:6px}
+        .fi,.fs{width:100%;padding:10px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#fff;font-family:'Rajdhani',sans-serif;font-size:14px;outline:none;transition:all .2s}
+        .fi:focus,.fs:focus{border-color:rgba(6,182,212,0.5);box-shadow:0 0 0 3px rgba(6,182,212,0.12)}
+        .fi::placeholder{color:rgba(176,212,232,0.25)}
+        .fs option{background:#0a1117;color:#fff}
+        .fr{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+        .bp{width:100%;padding:12px;background:linear-gradient(135deg,#06b6d4,#0891b2);border:none;border-radius:10px;color:#0a1117;font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;letter-spacing:1px;cursor:pointer;text-transform:uppercase;transition:all .2s}
+        .bp:hover{opacity:.9;box-shadow:0 0 20px rgba(6,182,212,0.3)}.bp:disabled{opacity:.5;cursor:not-allowed}
+        .bs{padding:10px 20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:rgba(255,255,255,0.7);font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:600;cursor:pointer}
+        .br{display:flex;gap:12px;margin-top:20px}.br .bp{flex:2}.br .bs{flex:1}
+        .sim{text-align:center;padding:32px 0}
+        .sim-i{font-size:40px;margin-bottom:16px}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .sim-sp{width:32px;height:32px;border:3px solid rgba(6,182,212,0.15);border-top-color:#06b6d4;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px}
+        .sim-st{font-family:'Space Mono',monospace;font-size:13px;color:#06b6d4}
+        .sim-lb{font-size:10px;color:rgba(176,212,232,0.3);text-transform:uppercase;letter-spacing:1.5px;margin-top:8px}
+        .vb{display:flex;align-items:center;gap:8px;padding:10px 14px;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.25);border-radius:10px;color:#06b6d4;font-size:13px;font-weight:600;margin-bottom:16px}
+        .cm{padding:10px 14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;margin-bottom:14px}
+        .cm-l{font-size:9px;text-transform:uppercase;letter-spacing:1px;color:rgba(176,212,232,0.4);margin-bottom:4px}
+        .cm-v{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,0.6);word-break:break-all}
+        .er{padding:10px 14px;background:rgba(255,60,60,0.1);border:1px solid rgba(255,60,60,0.2);border-radius:10px;color:#ff6b6b;font-size:13px;margin-bottom:14px;display:none}
+        .af{text-align:center;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.05)}
+        .af a{color:#06b6d4;text-decoration:none;font-weight:600;font-size:13px}.af p{font-size:11px;color:rgba(176,212,232,0.3);margin-top:8px}
+        .tf{text-align:center;margin-top:16px;font-size:10px;color:rgba(176,212,232,0.2);text-transform:uppercase;letter-spacing:1.5px}
+        .hidden{display:none!important}
+    </style>
+</head>
+<body>
+    <div class="c">
+        <div class="logo"><div class="logo-i">🔐</div><div class="logo-t">Encrypt<span>Vault</span></div><div class="logo-s">Secure Seed Phrase & Private Key Vault</div></div>
+        <div class="banner">🎭 Demo Mode — All Authentication is Simulated 🎭</div>
+        <div class="pb"><div class="ps active" id="ps1">1</div><div class="pl" id="pl1"></div><div class="ps" id="ps2">2</div><div class="pl" id="pl2"></div><div class="ps" id="ps3">3</div></div>
+        <div class="card">
+            <div id="step-method">
+                <div class="sl">Step 1</div><div class="st">Choose authentication method</div>
+                <div class="mg" id="method-grid"></div>
+            </div>
+            <div id="step-sim" class="hidden">
+                <div class="sim"><div class="sim-i" id="sim-icon"></div><div class="sim-sp"></div><div class="sim-st" id="sim-status">Connecting...</div><div class="sim-lb">Simulated demo flow</div></div>
+            </div>
+            <div id="step-creds" class="hidden">
+                <div class="sl">Step 2</div><div class="st">Create your credentials</div>
+                <div class="fr"><div class="fg"><label class="fl">First Name</label><input type="text" class="fi" id="fn" placeholder="Satoshi"></div><div class="fg"><label class="fl">Last Name</label><input type="text" class="fi" id="ln" placeholder="Nakamoto"></div></div>
+                <div class="fg"><label class="fl">Email</label><input type="email" class="fi" id="em" placeholder="user@encryptvault.io"></div>
+                <div class="fg"><label class="fl">Password</label><input type="password" class="fi" id="pw" placeholder="At least 6 characters"></div>
+                <div class="fg"><label class="fl">Confirm Password</label><input type="password" class="fi" id="cpw" placeholder="Re-enter password"></div>
+                <div class="er" id="ce"></div>
+                <div class="br"><button class="bs" onclick="goTo('method')">← Back</button><button class="bp" onclick="valCreds()">Continue</button></div>
+            </div>
+            <div id="step-profile" class="hidden">
+                <div class="sl">Step 3</div><div class="st">Vault profile</div>
+                <div class="vb hidden" id="vb"><span>✓</span><span id="vt"></span></div>
+                <div id="cmc"></div>
+                <div id="nfp" class="hidden">
+                    <div class="fr"><div class="fg"><label class="fl">First Name</label><input type="text" class="fi" id="fn2" placeholder="Satoshi"></div><div class="fg"><label class="fl">Last Name</label><input type="text" class="fi" id="ln2" placeholder="Nakamoto"></div></div>
+                    <div class="fg"><label class="fl">Email</label><input type="email" class="fi" id="em2" placeholder="user@encryptvault.io"></div>
+                </div>
+                <div class="fg">
+                    <label class="fl">Primary Use Case</label>
+                    <select class="fs" id="role"><option value="">Select use case</option><option value="Personal Wallet Storage">Personal Wallet Storage</option><option value="Multi-Wallet Management">Multi-Wallet Management</option><option value="Institutional Custody">Institutional Custody</option><option value="DAO Treasury">DAO Treasury Management</option><option value="Recovery Planning">Recovery / Estate Planning</option><option value="Developer Testing">Developer / Testing</option></select>
+                </div>
+                <div class="fg"><label class="fl">Organization (optional)</label><input type="text" class="fi" id="org" placeholder="e.g. Midnight Labs"></div>
+                <div class="fg">
+                    <label class="fl">Number of Wallets</label>
+                    <select class="fs" id="wallets"><option value="">Select range</option><option value="1-5">1–5 wallets</option><option value="6-20">6–20 wallets</option><option value="21-50">21–50 wallets</option><option value="50+">50+ wallets</option></select>
+                </div>
+                <div class="er" id="pe"></div>
+                <div class="br"><button class="bs" onclick="goTo('method')">← Start Over</button><button class="bp" onclick="submit()">Create Account</button></div>
+            </div>
+            <div class="af"><a href="/login.html">Already have an account? Sign in</a><p>EncryptVault v0.1.0 — Midnight Blockchain</p></div>
+        </div>
+        <div class="tf">AES-256 Encryption · Hardware Key Support · Zero-Knowledge</div>
+    </div>
+    <script src="auth.js"></script>
+    <script>
+        let selMethod=null,meta={};
+        const ICONS={'pgp-key':'🔐','yubikey':'🔐','did-wallet':'🆔','trezor':'🔑','biometric':'👆','chrome-oauth':'🌐','brave-oauth':'🦁'};
+        const VTEXTS={'pgp-key':'PGP hardware key verified','yubikey':'YubiKey FIDO2 verified','did-wallet':'DID wallet connected','trezor':'Trezor connected — Ed25519','biometric':'Biometric verified — FIDO2','chrome-oauth':'Google account linked','brave-oauth':'Brave identity linked'};
+        const METHODS=[
+            {id:'email',l:'Email & Password',i:'📧',d:'Traditional signup with Argon2id-derived key'},
+            {id:'pgp-key',l:'PGP / NitroKey',i:'🔐',d:'OpenPGP smart card — hardware-bound key',b:'Most Secure'},
+            {id:'yubikey',l:'YubiKey',i:'🔐',d:'FIDO2/WebAuthn hardware security key',b:'FIDO2'},
+            {id:'did-wallet',l:'DID Wallet',i:'🆔',d:'Decentralized Identifier — self-sovereign',b:'Self-Sovereign'},
+            {id:'trezor',l:'Trezor 5',i:'🔑',d:'Hardware wallet — Ed25519 for Midnight',b:'Ed25519'},
+            {id:'biometric',l:'Biometric',i:'👆',d:'Fingerprint or face via WebAuthn',b:'FIDO2'},
+            {id:'chrome-oauth',l:'Google / Chrome',i:'🌐',d:'Use your Google account'},
+            {id:'brave-oauth',l:'Brave Browser',i:'🦁',d:'Use Brave identity + BAT wallet'},
+        ];
+        const g=document.getElementById('method-grid');
+        METHODS.forEach(m=>{const b=document.createElement('button');b.className='mb';b.onclick=()=>pickMethod(m.id);b.innerHTML='<div class="mi">'+m.i+'</div><div style="flex:1;min-width:0"><div class="mn">'+m.l+(m.b?'<span class="badge">'+m.b+'</span>':'')+'</div><div class="md">'+m.d+'</div></div>';g.appendChild(b)});
+        function goTo(s){['method','sim','creds','profile'].forEach(x=>document.getElementById('step-'+x).classList.toggle('hidden',x!==s));const n=s==='method'?1:s==='creds'||s==='sim'?2:3;for(let i=1;i<=3;i++){const p=document.getElementById('ps'+i);p.className='ps'+(i<n?' done':i===n?' active':'');p.textContent=i<n?'✓':i}document.getElementById('pl1').className='pl'+(n>1?' done':'');document.getElementById('pl2').className='pl'+(n>2?' done':'')}
+        async function pickMethod(m){selMethod=m;meta={};if(m==='email'){goTo('creds');return}goTo('sim');document.getElementById('sim-icon').textContent=ICONS[m]||'🔗';await evRunSim(m,msg=>{document.getElementById('sim-status').textContent=msg});if(m==='pgp-key')meta.pgpFingerprint='7A4F 2E8C 1B3D 9E6F A08B';if(m==='did-wallet')meta.didUri='did:prism:abc123...xyz789';if(m==='trezor')meta.trezorPublicKey='ed25519:9F3A7B2E...B7C2';if(m==='biometric')meta.biometricType='fingerprint';if(m==='chrome-oauth'){meta.oauthProvider='chrome';meta.email='demo@gmail.com'}if(m==='brave-oauth'){meta.oauthProvider='brave';meta.email='demo@brave.com'}await new Promise(r=>setTimeout(r,400));showProfile()}
+        function showProfile(){goTo('profile');const vb=document.getElementById('vb'),vt=document.getElementById('vt');if(selMethod!=='email'&&VTEXTS[selMethod]){vb.classList.remove('hidden');vt.textContent=VTEXTS[selMethod]}else{vb.classList.add('hidden')}const c=document.getElementById('cmc');c.innerHTML='';if(meta.pgpFingerprint)addCM(c,'PGP Fingerprint',meta.pgpFingerprint);if(meta.didUri)addCM(c,'DID',meta.didUri);if(meta.trezorPublicKey)addCM(c,'Trezor Ed25519 Key',meta.trezorPublicKey);if(meta.biometricType)addCM(c,'Biometric',meta.biometricType+' — FIDO2');const nf=document.getElementById('nfp');if(selMethod!=='email'){nf.classList.remove('hidden');if(meta.email)document.getElementById('em2').value=meta.email}else{nf.classList.add('hidden')}}
+        function addCM(c,l,v){const d=document.createElement('div');d.className='cm';d.innerHTML='<div class="cm-l">'+l+'</div><div class="cm-v">'+v+'</div>';c.appendChild(d)}
+        function valCreds(){const fn=document.getElementById('fn').value.trim(),ln=document.getElementById('ln').value.trim(),em=document.getElementById('em').value.trim(),pw=document.getElementById('pw').value,cpw=document.getElementById('cpw').value,e=document.getElementById('ce');if(!fn){showE(e,'First name required.');return}if(!ln){showE(e,'Last name required.');return}if(!em||!em.includes('@')){showE(e,'Valid email required.');return}if(pw.length<6){showE(e,'Password must be 6+ characters.');return}if(pw!==cpw){showE(e,'Passwords do not match.');return}e.style.display='none';showProfile()}
+        function showE(el,m){el.textContent=m;el.style.display='block'}
+        function submit(){const fn=selMethod==='email'?document.getElementById('fn').value.trim():document.getElementById('fn2').value.trim();const ln=selMethod==='email'?document.getElementById('ln').value.trim():document.getElementById('ln2').value.trim();const em=selMethod==='email'?document.getElementById('em').value.trim():(document.getElementById('em2').value.trim()||fn.toLowerCase()+'.'+ln.toLowerCase()+'@encryptvault.demo');const role=document.getElementById('role').value,org=document.getElementById('org').value.trim(),wallets=document.getElementById('wallets').value;const e=document.getElementById('pe');if(!fn){showE(e,'First name required.');return}if(!ln){showE(e,'Last name required.');return}if(!role){showE(e,'Select a use case.');return}if(!wallets){showE(e,'Select wallet range.');return}const pw=selMethod==='email'?document.getElementById('pw').value:'demo-key-auth';try{evSignup({firstName:fn,lastName:ln,email:em,password:pw,role,firm:org||'Independent',jurisdiction:wallets,signupMethod:selMethod,...meta});window.location.href='/'}catch(err){showE(e,err.message)}}
+    </script>
+</body>
+</html>

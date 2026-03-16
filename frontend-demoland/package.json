@@ -1,0 +1,15 @@
+{
+  "name": "encryptvault-demoland",
+  "version": "0.1.0",
+  "description": "EncryptVault demoLand frontend — Crypto seed phrase encryption vault",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "dev:demo": "EV_MODE=demoland node server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  }
+}
