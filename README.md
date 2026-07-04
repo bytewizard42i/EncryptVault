@@ -41,6 +41,8 @@ The vision: What if storing crypto keys was as safe and simple as using a bank v
 
 This initial work on EncryptVault directly led to the broader identity vision that became [DIDz.io](https://github.com/bytewizard42i/didz-dapp-system) — because the problem of "proving you are you" extends far beyond crypto wallets.
 
+> For the full founder's story in John's own words (the Shamir m of n social recovery, the private-state side effect, Catalyst, and the patent to open-source turn), see [`docs/FOUNDER_STORY.md`](docs/FOUNDER_STORY.md).
+
 ---
 
 ## Evolution Into the Ecosystem
