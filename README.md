@@ -50,7 +50,7 @@ This initial work on EncryptVault directly led to the broader identity vision th
 EncryptVault represents the **earliest product** in the EnterpriseZK portfolio. The identity and security concepts explored here evolved into:
 
 - **[DIDz.io](https://github.com/bytewizard42i/didz-dapp-system)** — The "Soul-Token" concept from EncryptVault became the foundation for DIDz's biometric-bound digital identity
-- **[LegacyKey](https://github.com/bytewizard42i/DownMan)** — The estate planning concern ("what happens to my crypto when I die?") became its own protocol with Shamir's Secret Sharing + PGP dead-man's switch
+- **[LegacyKey](https://github.com/bytewizard42i/LegacyKey)** — The estate planning concern ("what happens to my crypto when I die?") became its own protocol with Shamir's Secret Sharing + PGP dead-man's switch
 - **[KYCz](https://github.com/bytewizard42i/KYCz_us_app)** — The identity verification concepts evolved into zero-knowledge KYC
 
 ---
