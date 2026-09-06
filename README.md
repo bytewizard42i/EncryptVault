@@ -104,3 +104,10 @@ This project is part of the DIDzMonolith ecosystem and inherits the four-engine 
 **MiCA regulatory notes**: [`DIDzMonolith-docs/compliance/MICA_REGULATORY_NOTES.md`](../../DIDzMonolith-docs/compliance/MICA_REGULATORY_NOTES.md) — EU crypto-asset regulation product-by-product matrix.
 
 ---
+
+
+## Shared sign-in options
+
+See [the shared sign-in module pointer](SIGN_IN_SELECTIONS.md) for reusable choice
+configuration and this repository's integration boundaries. This documentation
+pointer does not activate authentication.
